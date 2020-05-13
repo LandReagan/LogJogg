@@ -8,4 +8,8 @@ class LocationService {
   static Future<Position> currentPosition() async {
     return await Geolocator().getCurrentPosition(desiredAccuracy: _accuracy);
   }
+  
+  static Stream<Position> get positions {
+    return Geolocator().getPositionStream();
+  }
 }

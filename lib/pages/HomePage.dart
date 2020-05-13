@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:LogJogg/services/LocationService.dart';
@@ -25,27 +27,18 @@ class LocationWidget extends StatefulWidget {
 
 class _LocationWidgetState extends State<LocationWidget> {
 
-  // todo: remove that dependency somehow
-  Position _position;
-
-  void _updatePosition() async {
-    _position = await LocationService.currentPosition();
-    setState(() {
-
-    });
-  }
+  StreamController<Position> _positionsController;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Text("LAT: ${_position?.latitude ?? "XX"}, LNG: ${_position?.longitude ?? "XX"}"),
-        FlatButton(
-          child: Text('GET LOCATION'),
-          onPressed: () {
-            _updatePosition();
+        StreamBuilder(
+          stream: LocationService.positions,
+          builder: (BuildContext context, AsyncSnapshot<Position> snapshot) {
+            return Text("LAT: ${snapshot.data?.latitude ?? "XX"}, LNG: ${snapshot.data?.longitude ?? "XX"}");
           },
-        )
+        ),
       ],
     );
   }
