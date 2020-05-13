@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'package:LogJogg/services/LocationService.dart';
 import 'package:geolocator/geolocator.dart';
 
 class HomePage extends StatelessWidget {
@@ -23,14 +25,13 @@ class LocationWidget extends StatefulWidget {
 
 class _LocationWidgetState extends State<LocationWidget> {
 
+  // todo: remove that dependency somehow
   Position _position;
 
   void _updatePosition() async {
-    final Geolocator geolocator = Geolocator()..forceAndroidLocationManager;
-
-    _position = await geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.best);
+    _position = await LocationService.currentPosition();
     setState(() {
-      //print('pos!');
+
     });
   }
 
