@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:LogJogg/services/LocationService.dart';
+import 'file:///C:/Users/landr/Desktop/LogJogg/lib/services/location/LocationService.dart';
 
 void main() {
 

@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'package:LogJogg/services/LocationService.dart';
+import 'package:LogJogg/services/location/LocationService.dart';
 import 'package:geolocator/geolocator.dart';
 
 class HomePage extends StatelessWidget {
